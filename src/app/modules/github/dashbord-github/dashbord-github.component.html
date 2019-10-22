@@ -1,0 +1,141 @@
+<div *ngIf="!error" class="container">
+  <div class="row">
+    <div class="col align-self-center">
+      <div *ngIf="!!selectRepo" class="preview">
+        <p class="font-size-18">
+          <a class="margin-left-15" [routerLink]="['/', userGithubInfo.login]">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Preview</a
+          >
+        </p>
+      </div>
+      <ng-container *ngTemplateOutlet="userInfo"></ng-container>
+      <br />
+      <div *ngIf="!selectRepo" class="row">
+        <div class="col-lg-6 col-sm-12 text-left" *ngFor="let repo of repoGithubInfo">
+          <p>
+            <i class="fa fa-file-code-o" aria-hidden="true"></i>
+            <a class="margin-left-15" [routerLink]="['/', repo.owner.login]" [queryParams]="{ repo: repo.name }">{{
+              repo.name
+            }}</a>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!!selectRepo" class="row">
+        <ng-container *ngTemplateOutlet="repoInfo"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #userInfo>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-12" *ngIf="userGithubInfo.avatar_url">
+        <img [alt]="userGithubInfo.login" [src]="userGithubInfo.avatar_url" class="avatar" width="230" />
+      </div>
+      <div class="col-lg-9 col-sm-12">
+        <div>
+          <div class="userInfo_item">
+            <h1 [routerLink]="['/', userGithubInfo.login]" *ngIf="userGithubInfo.name">{{ userGithubInfo.name }}</h1>
+            <p *ngIf="userGithubInfo.login" class="profileTitle_username">
+              <a [href]="userGithubInfo.html_url">@{{ userGithubInfo.login }}</a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <ul>
+            <li *ngIf="userGithubInfo.bio" class="userInfo_item">
+              <p class="font-size-14">{{ userGithubInfo.bio }}</p>
+            </li>
+            <li *ngIf="userGithubInfo.company" class="userInfo_item">
+              <p class="font-size-14">{{ userGithubInfo.company }}</p>
+            </li>
+            <li *ngIf="userGithubInfo.location" class="userInfo_item">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <p class="font-size-14 margin-left-15">{{ userGithubInfo.location }}</p>
+            </li>
+            <li *ngIf="userGithubInfo.blog" class="userInfo_item">
+              <i class="fa fa-link" aria-hidden="true"></i>
+              <p class="font-size-14 margin-left-15">
+                <a [href]="userGithubInfo.blog">{{ userGithubInfo.blog }}</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #repoInfo>
+  <div class="container">
+    <br />
+    <div class="color-update">
+      <h5 class="text-center color-update">
+        <a [href]="selectRepo.html_url">{{ selectRepo.name }}</a>
+      </h5>
+      <p *ngIf="selectRepo.full_name">{{ selectRepo.full_name | uppercase}}</p>
+      <div class="color-update">
+        <p *ngIf="selectRepo.language">{{ selectRepo.language }}</p>
+
+        <div *ngIf="selectRepo.description">
+          <p>
+            {{ selectRepo.description }}
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 color-update">
+            <p *ngIf="selectRepo.created_at">
+              Created in {{ selectRepo.created_at | date: 'MM-dd-yyyy'  }}
+            </p>
+            <p *ngIf="selectRepo.stargazers_count">
+              {{ selectRepo.stargazers_count }}
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </p>
+            <p *ngIf="selectRepo.forks_count">
+              {{ selectRepo.forks_count }}
+              <i class="fa fa-code-fork" aria-hidden="true"></i>
+            </p>
+          </div>
+          <div class="col-lg-6  col-sm-12 color-update">
+            <p *ngIf="selectRepo.updated_at" class="text-right">
+              Last push in {{ selectRepo.pushed_at | date: 'MM-dd-yyyy' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<div *ngIf="error" class="container">
+  <div class="row">
+    <div class="col align-self-center">
+      <div *ngIf="!!selectRepo" class="preview">
+        <p class="font-size-18">
+          <a class="margin-left-15" [routerLink]="['/', userGithubInfo.login]">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Preview</a
+          >
+        </p>
+      </div>
+      <ng-container *ngTemplateOutlet="userInfo"></ng-container>
+      <br />
+      <div *ngIf="!selectRepo" class="row">
+        <div class="col-lg-6 col-sm-12 text-left" *ngFor="let repo of repoGithubInfo">
+          <p>
+            <i class="fa fa-file-code-o" aria-hidden="true"></i>
+            <a class="margin-left-15" [routerLink]="['/', repo.owner.login]" [queryParams]="{ repo: repo.name }">{{
+                repo.name
+              }}</a>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!!selectRepo" class="row">
+        <ng-container *ngTemplateOutlet="repoInfo"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>

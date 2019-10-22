@@ -1,0 +1,38 @@
+@import './theme-variable';
+
+.margin-right-15 {
+  margin-right: 15px !important;
+}
+
+.margin-right-7 {
+  margin-right: 7px !important;
+}
+
+.margin-left-15 {
+  margin-left: 15px !important;
+}
+.navbar-footer-background-color {
+  background-color: $navbar-footer !important;
+}
+.white-color-text {
+  color: white !important;
+}
+.backgroud-primary {
+  background-color: $primary !important;
+}
+.backgroud-secondary {
+  background-color: $secondary !important;
+}
+
+.text-color-primary {
+  color: $textcolor !important;
+}
+.text-color-classique {
+  color: $textclassic !important;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-18 {
+  font-size: 18px;
+}

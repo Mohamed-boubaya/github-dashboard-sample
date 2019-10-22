@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0" id="login-form">
+            <div class="card-header navbar-footer-background-color">
+              <h3 class="cmb-0">Search Username</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <div class="input-group input-group-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text navbar-footer-background-color">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <input
+                    class="fa fa-user"
+                    type="text"
+                    class="form-control form-control-lg rounded-0"
+                    #username
+                    placeholder="Username"
+                  />
+                </div>
+              </div>
+              <div class="rounded custom-dropdown" *ngIf="lanceOfSearch" [@alertDisplay]="">
+                <span
+                  class="dropdown-item rounded disabled"
+                  *ngIf="searchLoading && (githubData && githubData.total_count != 0)"
+                >
+                  Loading...</span
+                >
+
+                <span class="dropdown-item rounded disabled" *ngIf="notFoundFolder"> No result</span>
+              </div>
+              <div #dropRef class="rounded custom-dropdown" *ngIf="githubData && !checked">
+                <div *ngFor="let result of githubData.items | slice: 0:10; let i = index">
+                  <a (click)="onClick(result)" class="dropdown-item rounded">
+                    <span data-toggle="collapse" aria-expanded="false"> {{ result.login }} </span>
+                  </a>
+                </div>
+                <div *ngIf="githubData.total_count > 11">
+                  <a class="dropdown-item rounded">
+                    <span data-toggle="collapse" aria-expanded="false">
+                      <span *ngIf="githubData.total_count - 11 === 1">... plus 1 more result</span>
+                      <span *ngIf="githubData.total_count - 11 > 1"
+                        >... more {{ githubData.total_count - 11 }} additional results</span
+                      >
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <span class="dropdown-item rounded disabled" *ngIf="notFoundFolder">No result</span>
+            </div>
+
+            <div class="text-center" id="invalid-feedback-value" *ngIf="errorChosse" [@alertDisplay]="">
+              <p *ngIf="githubData === null">Error reading data from server</p>
+              <p *ngIf="githubData && githubData.total_count === 0">Not Found username</p>
+            </div>
+
+            <button
+              [disabled]="(githubData && githubData.total_count === 0) || githubData === null"
+              type="submit"
+              class="btn btn-success btn-lg float-right"
+              id="btnLogin"
+              (click)="gotToUserPage()"
+            >
+              View Info
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

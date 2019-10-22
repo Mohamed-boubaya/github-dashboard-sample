@@ -1,0 +1,95 @@
+.btn-success {
+  border-color: #616161;
+  background-color: #616161;
+  color: #fff;
+  width: 100%;
+  box-shadow: none;
+}
+
+a {
+  color: #616161;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h3 {
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+.alert-danger {
+  background-color: rgb(190, 38, 53);
+  border-color: rgb(190, 38, 53);
+  text-align: center;
+  font-size: medium;
+  color: beige;
+  animation: shake 0.5s;
+  animation-iteration-count: 0.5;
+}
+
+.btn.btn-success:hover {
+  color: #fff;
+  background-color: #616161;
+  border-color: #616161;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+span.input-group-text {
+  color: white;
+}
+
+.card-header {
+  color: white;
+}
+
+.card-body {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+#invalid-feedback-value {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 16px;
+  color: #dc3545;
+}
+.container {
+  margin-bottom: 25vh !important;
+}
+.form-control {
+  box-shadow: none;
+}
